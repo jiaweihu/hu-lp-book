@@ -25,6 +25,7 @@ bibtex_bibfiles:
 # Information about where the book exists on the web
 repository:
   url: https://github.com/jiaweihu/hu-lp-book  # Online location of your book
+  path_to_book: ""  # A path to your book's folder, relative to the repository root.
   branch: master  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
