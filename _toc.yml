@@ -1,0 +1,21 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: docs/intro
+parts:
+  - caption: docs/Linear Programming
+    chapters:
+    - file: docs/Linear-Programming
+      sections:
+        - file: docs/LP/Optimization-Importance
+        - file: docs/LP/Objectives-DecisionVariables-Constraints
+        - file: docs/LP/Optimal-Feasible-Solutions
+        - file: docs/LP/Linear-Programming
+    - file: docs/CaseStudy-HappyPetFood-Desc
+    - file: docs/LP-CaseStudy
+  - caption: docs/Integer Linear Programming
+    chapters:
+    - file: docs/Integer-Linear-Programming
+    - file: docs/notebooks1
+    - file: docs/markdown-notebooks1
