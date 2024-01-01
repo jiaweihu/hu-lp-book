@@ -4,7 +4,7 @@
 format: jb-book
 root: docs/intro
 parts:
-  - caption: docs/Linear Programming
+  - caption: Linear Programming
     chapters:
     - file: docs/Linear-Programming
       sections:
@@ -14,8 +14,8 @@ parts:
         - file: docs/LP/Linear-Programming
     - file: docs/CaseStudy-HappyPetFood-Desc
     - file: docs/LP-CaseStudy
-  - caption: docs/Integer Linear Programming
+  - caption: Integer Linear Programming
     chapters:
-    - file: docs/Integer-Linear-Programming
-    - file: docs/notebooks1
-    - file: docs/markdown-notebooks1
+    - file: docs/Ingeter-Linear-Programming
+    - file: docs/ManufacturingAndDistribution
+    - file: docs/Sudoku_Solver

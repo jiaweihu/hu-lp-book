@@ -1,0 +1,1459 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Manufacturing and Distribution Problem &#8212; Linear Programming book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/ManufacturingAndDistribution';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sudoku Solver - Integer Linear Programming approach using PuLP" href="Sudoku_Solver.html" />
+    <link rel="prev" title="Integer Programming" href="Ingeter-Linear-Programming.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/lp.jpg" class="logo__image only-light" alt="Linear Programming book - Home"/>
+    <script>document.write(`<img src="../_static/lp.jpg" class="logo__image only-dark" alt="Linear Programming book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to hu’s linear programming book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Programming</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="Linear-Programming.html">Linear Programming</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="LP/Optimization-Importance.html">Understanding the Importance of Optimization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LP/Objectives-DecisionVariables-Constraints.html">Objectives, Decision Variables, and Constraints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LP/Optimal-Feasible-Solutions.html">Optimal Solution and Feasible Solutions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="LP/Linear-Programming.html">Linear Programming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="CaseStudy-HappyPetFood-Desc.html">Case Study: Happy Pet Food Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LP-CaseStudy.html">Linear Programming Case Study: Happy Pet Food</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Integer Linear Programming</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Ingeter-Linear-Programming.html">Integer Programming</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Manufacturing and Distribution Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Sudoku_Solver.html">Sudoku Solver - Integer Linear Programming approach using PuLP</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/jiaweihu/hu-lp-book/blob/master/docs/ManufacturingAndDistribution.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jiaweihu/hu-lp-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jiaweihu/hu-lp-book/issues/new?title=Issue%20on%20page%20%2Fdocs/ManufacturingAndDistribution.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/docs/ManufacturingAndDistribution.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Manufacturing and Distribution Problem</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">Problem statement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-solve-it-graphically-as-though-it-is-an-lp-problem-i-e-lp-relaxation">Let’s solve it graphically as though it is an LP problem, i.e. LP relaxation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-solution">Graphical Solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pick-coordinates-to-test-for-the-optimal-solution">Pick coordinates to test for the optimal solution.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-using-pulp">Solution using Pulp</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manufacturing-problem">Manufacturing problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-ncert">From NCERT</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximize">Maximize</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subject-to-the-constraints">subject to the constraints:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Graphical Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pick-integer-points-coordinates-for-optimal-solution">Pick integer points (coordinates) for optimal solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution using PuLp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-budgeting-problem">Capital budgeting problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-budgeting-problem-with-extension">Capital budgeting problem with extension</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manufacturing-plants-and-distribution-facilities">Manufacturing plants and Distribution facilities</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="manufacturing-and-distribution-problem">
+<h1>Manufacturing and Distribution Problem<a class="headerlink" href="#manufacturing-and-distribution-problem" title="Permalink to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">from</span> <span class="nn">pulp</span> <span class="kn">import</span> <span class="n">LpMaximize</span><span class="p">,</span> <span class="n">LpMinimize</span><span class="p">,</span> <span class="n">LpProblem</span><span class="p">,</span> <span class="n">LpStatus</span><span class="p">,</span> <span class="n">lpSum</span><span class="p">,</span> <span class="n">LpVariable</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">from</span> <span class="nn">pulp</span> <span class="kn">import</span> <span class="n">LpMaximize</span><span class="p">,</span> <span class="n">LpMinimize</span><span class="p">,</span> <span class="n">LpProblem</span><span class="p">,</span> <span class="n">LpStatus</span><span class="p">,</span> <span class="n">lpSum</span><span class="p">,</span> <span class="n">LpVariable</span>
+
+<span class="ne">ModuleNotFoundError</span>: No module named &#39;numpy&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="problem-statement">
+<h2>Problem statement<a class="headerlink" href="#problem-statement" title="Permalink to this heading">#</a></h2>
+<p>A factory makes two cars GlossyCar and ShinyCar. The profits from selling one GlossyCar is <code class="docutils literal notranslate"><span class="pre">$</span></code>30,000 and from selling one ShinyCar is <code class="docutils literal notranslate"><span class="pre">$</span></code>45,000. The company wants to maximize the profits that it makes on the production of these two cars.</p>
+<p>Each of these cars have manufacturing processes that are run on 3 different manufacturing plants. Plant A, Plant B, and plant C.</p>
+<ul class="simple">
+<li><p>GlossyCar need to be processed in Plant A for 3 hours, Plant B for 7 hours and Plant C for 3 hours</p></li>
+<li><p>ShinyCar need to be processed in Plant A for 4 hours, Plant B for 6 hours and Plant C for 6 hours</p></li>
+<li><p>Plant A has a total capacity of a 30 processing hours per week</p></li>
+<li><p>Plant B has a total capacity of a 60 processing hours per week</p></li>
+<li><p>Plant C has a total capacity of a 42 processing hours per week</p></li>
+</ul>
+<p><strong>Maximize</strong></p>
+<p>Z = 30000x + 45000y</p>
+<p><strong>Constraints</strong></p>
+<p>3x + 4y &lt;= 30</p>
+<p>7x + 6y &lt;= 60</p>
+<p>3x + 6y &lt;= 42</p>
+<p>where x and y should be integers</p>
+</section>
+<section id="let-s-solve-it-graphically-as-though-it-is-an-lp-problem-i-e-lp-relaxation">
+<h2>Let’s solve it graphically as though it is an LP problem, i.e. LP relaxation<a class="headerlink" href="#let-s-solve-it-graphically-as-though-it-is-an-lp-problem-i-e-lp-relaxation" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">30</span> <span class="o">-</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">x_i</span><span class="p">))</span> <span class="o">/</span> <span class="mi">4</span>
+
+<span class="n">y_2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">60</span> <span class="o">-</span> <span class="p">(</span><span class="mi">7</span> <span class="o">*</span> <span class="n">x_i</span><span class="p">))</span> <span class="o">/</span> <span class="mi">6</span>
+
+<span class="n">y_3</span> <span class="o">=</span> <span class="p">(</span><span class="mi">42</span> <span class="o">-</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="n">x_i</span><span class="p">))</span> <span class="o">/</span> <span class="mi">6</span>
+
+<span class="n">y_4</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">y_2</span><span class="p">,</span> <span class="n">y_3</span><span class="p">)</span>
+
+<span class="n">y_5</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">y_1</span><span class="p">,</span> <span class="n">y_4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="graphical-solution">
+<h2>Graphical Solution<a class="headerlink" href="#graphical-solution" title="Permalink to this heading">#</a></h2>
+<p>By luck, the corner point which gives us the optimal solution is an integer point so we can accept the final solution as this integer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_i</span><span class="p">,</span> <span class="n">y_1</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$3x + 4y\leq30$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_i</span><span class="p">,</span> <span class="n">y_2</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$7x + 6y\leq60$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_i</span><span class="p">,</span> <span class="n">y_3</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$3x + 6y\leq42$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">15</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x_i</span><span class="p">,</span> <span class="n">y_5</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.30</span><span class="p">,</span> <span class="n">interpolate</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.15</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9c66809ff14ffed657d1dddf12b67ac90165f331ee589bab8037457eebb52f3e.png" src="../_images/9c66809ff14ffed657d1dddf12b67ac90165f331ee589bab8037457eebb52f3e.png" />
+</div>
+</div>
+</section>
+<section id="pick-coordinates-to-test-for-the-optimal-solution">
+<h2>Pick coordinates to test for the optimal solution.<a class="headerlink" href="#pick-coordinates-to-test-for-the-optimal-solution" title="Permalink to this heading">#</a></h2>
+<p>Some coordinates are integral values and others are continuous values</p>
+<p><strong>It so happens that the optimal solution of this LP are integral values of x and y</strong></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">corner_points</span> <span class="o">=</span> <span class="p">[(</span><span class="mf">8.57</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span> 
+
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">corner_points</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At:</span><span class="si">{</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="si">}</span><span class="s2">, max(z)= </span><span class="si">{</span><span class="mi">30000</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">45000</span><span class="o">*</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At:(8.57, 0), max(z)= 257100.0
+At:(6, 3), max(z)= 315000
+At:(2, 6), max(z)= 330000
+At:(0, 7), max(z)= 315000
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-using-pulp">
+<h2>Solution using Pulp<a class="headerlink" href="#solution-using-pulp" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">LpProblem</span><span class="p">(</span><span class="s1">&#39;car-profit-maximizing&#39;</span><span class="p">,</span> <span class="n">sense</span> <span class="o">=</span> <span class="n">LpMaximize</span><span class="p">)</span>
+
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>car-profit-maximizing:
+MAXIMIZE
+None
+VARIABLES
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">LpVariable</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">lowBound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cat</span> <span class="o">=</span> <span class="s1">&#39;Integer&#39;</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">LpVariable</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">lowBound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cat</span> <span class="o">=</span> <span class="s1">&#39;Integer&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">30000</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">45000</span><span class="o">*</span><span class="n">y</span><span class="p">,</span> <span class="s1">&#39;profit&#39;</span><span class="p">)</span>
+
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>car-profit-maximizing:
+MAXIMIZE
+30000*x + 45000*y + 0
+VARIABLES
+0 &lt;= x Integer
+0 &lt;= y Integer
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">30</span><span class="p">,</span> <span class="s2">&quot;Plant A&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">7</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">60</span><span class="p">,</span> <span class="s2">&quot;Plant B&quot;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">42</span><span class="p">,</span> <span class="s2">&quot;Plant C&quot;</span><span class="p">)</span>
+
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>car-profit-maximizing:
+MAXIMIZE
+30000*x + 45000*y + 0
+SUBJECT TO
+Plant_A: 3 x + 4 y &lt;= 30
+
+Plant_B: 7 x + 6 y &lt;= 60
+
+Plant_C: 3 x + 6 y &lt;= 42
+
+VARIABLES
+0 &lt;= x Integer
+0 &lt;= y Integer
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">status</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="n">status</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;status:</span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">status</span><span class="si">}</span><span class="s1"> meaning: </span><span class="si">{</span><span class="n">LpStatus</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">status</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>status:1 meaning: Optimal
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">objective</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>330000.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">variables</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> : </span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">value</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x : 2.0
+y : 6.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="manufacturing-problem">
+<h2>Manufacturing problem<a class="headerlink" href="#manufacturing-problem" title="Permalink to this heading">#</a></h2>
+<section id="from-ncert">
+<h3>From NCERT<a class="headerlink" href="#from-ncert" title="Permalink to this heading">#</a></h3>
+<p><a class="reference external" href="https://ncert.nic.in/ncerts/l/lemh206.pdf">https://ncert.nic.in/ncerts/l/lemh206.pdf</a></p>
+<p>A manufacturing company makes two models A and B of a product. Each piece of Model A requires 9 labour hours for fabricating and 1 labour hour for finishing. Each piece of Model B requires 12 labour hours for
+fabricating and 3 labour hours for finishing. For fabricating and finishing, the maximum
+labour hours available are 180 and 30 respectively.</p>
+<p>The company makes a profit of 8000 on each piece of model A and 12000 on each piece of Model B. How many
+pieces of Model A and Model B should be manufactured per week to realise a maximum
+profit? What is the maximum profit per week? <a class="reference external" href="https://ncert.nic.in/ncerts/l/lemh206.pdf">link</a></p>
+<section id="solution">
+<h4>Solution:<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h4>
+<p>Suppose x is the number of pieces of Model A and y is the number of pieces
+of Model B. Then</p>
+<p>Total profit = 8000x + 12000y</p>
+<p>Let Z = 8000x + 12000y</p>
+<p>We now have the following mathematical model for the given problem.</p>
+</section>
+</section>
+<section id="maximize">
+<h3>Maximize<a class="headerlink" href="#maximize" title="Permalink to this heading">#</a></h3>
+<p>Z = 8000 x + 12000 y</p>
+</section>
+<section id="subject-to-the-constraints">
+<h3>subject to the constraints:<a class="headerlink" href="#subject-to-the-constraints" title="Permalink to this heading">#</a></h3>
+<p>9x + 12y ≤ 180 (Fabricating constraint)</p>
+<p>i.e. 3x + 4y ≤ 60</p>
+<p>x + 3y ≤ 30 (Finishing constraint)</p>
+<p>x &gt;= 0, y &gt;= 0, must be integer because number of product will integer not in fraction.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># z = 8000x + 12000y</span>
+
+<span class="c1"># 9x + 12y &lt;=180</span>
+
+<span class="c1"># x + 3y &lt;= 30</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">180</span> <span class="o">-</span> <span class="mi">9</span><span class="o">*</span><span class="n">x_i</span><span class="p">)</span> <span class="o">/</span> <span class="mi">12</span>
+
+<span class="n">y_2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">30</span> <span class="o">-</span> <span class="n">x_i</span><span class="p">)</span> <span class="o">/</span> <span class="mi">3</span>
+
+<span class="n">y_3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">minimum</span><span class="p">(</span><span class="n">y_1</span><span class="p">,</span> <span class="n">y_2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h3>Graphical Solution<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_i</span><span class="p">,</span> <span class="n">y_1</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$9x +12y\leq180$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_i</span><span class="p">,</span> <span class="n">y_2</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$x+3y\leq30$&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x_i</span><span class="p">,</span> <span class="n">y_3</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.30</span><span class="p">)</span>
+
+<span class="n">major_ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">minor_ticks</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">major_ticks</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">minor_ticks</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">major_ticks</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">minor_ticks</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span> <span class="o">=</span> <span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.15</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">borderaxespad</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6d03d9055db9ac983b9b558f2083e0bcf516b849e46adc0d3c6699fe7e6140e2.png" src="../_images/6d03d9055db9ac983b9b558f2083e0bcf516b849e46adc0d3c6699fe7e6140e2.png" />
+</div>
+</div>
+</section>
+<section id="pick-integer-points-coordinates-for-optimal-solution">
+<h3>Pick integer points (coordinates) for optimal solution<a class="headerlink" href="#pick-integer-points-coordinates-for-optimal-solution" title="Permalink to this heading">#</a></h3>
+<p>You’ll get optimal solution at (12, 6) in below. This is only an approximation, you may or may not get the right answer using this, in our case we happen upon the right solution</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">edge_coordinates</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">),</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)]</span> 
+
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">edge_coordinates</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;At:</span><span class="si">{</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="si">}</span><span class="s2">, max(z)= </span><span class="si">{</span><span class="mi">8000</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">12000</span><span class="o">*</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At:(20, 0), max(z)= 160000
+At:(16, 3), max(z)= 164000
+At:(12, 6), max(z)= 168000
+At:(9, 7), max(z)= 156000
+At:(6, 8), max(z)= 144000
+At:(3, 9), max(z)= 132000
+At:(0, 10), max(z)= 120000
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h3>Solution using PuLp<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">LpProblem</span><span class="p">(</span><span class="s1">&#39;profit-maximizing&#39;</span><span class="p">,</span> <span class="n">sense</span> <span class="o">=</span> <span class="n">LpMaximize</span><span class="p">)</span>
+
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>profit-maximizing:
+MAXIMIZE
+None
+VARIABLES
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">LpVariable</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">lowBound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cat</span> <span class="o">=</span> <span class="s1">&#39;Integer&#39;</span><span class="p">)</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">LpVariable</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">lowBound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cat</span> <span class="o">=</span> <span class="s1">&#39;Integer&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">+=</span> <span class="mi">8000</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">12000</span><span class="o">*</span><span class="n">y</span><span class="p">,</span> <span class="s1">&#39;profit&#39;</span>
+
+<span class="n">model</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">9</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="mi">12</span><span class="o">*</span><span class="n">y</span> <span class="o">&lt;=</span> <span class="mi">180</span><span class="p">,</span> <span class="s1">&#39;Fabricating constraint&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">+=</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">y</span> <span class="o">&lt;=</span><span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;Finishing constraint&#39;</span><span class="p">)</span>
+
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>profit-maximizing:
+MAXIMIZE
+8000*x + 12000*y + 0
+SUBJECT TO
+Fabricating_constraint: 9 x + 12 y &lt;= 180
+
+Finishing_constraint: x + 3 y &lt;= 30
+
+VARIABLES
+0 &lt;= x Integer
+0 &lt;= y Integer
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">status</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;status:</span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">status</span><span class="si">}</span><span class="s1"> meaning: </span><span class="si">{</span><span class="n">LpStatus</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">status</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>status:1 meaning: Optimal
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">objective</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>168000.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">variables</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> : </span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">value</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x : 12.0
+y : 6.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="capital-budgeting-problem">
+<h3>Capital budgeting problem<a class="headerlink" href="#capital-budgeting-problem" title="Permalink to this heading">#</a></h3>
+<p>There are four possible projects, which each run for 3 years and have the following characteristics.</p>
+<ul>
+<li><p>Project 1 with capital requirements for year 1 = 0.5m, year 2 = 0.3m, year 3 = 0.2m. Returns 2</p></li>
+<li><p>Project 2 with capital requirements for year 1 = 1m, year 2 = 0.8m, year 3 = 0.2m. Returns 3</p></li>
+<li><p>Project 3 with capital requirements for year 1 = 1.5m, year 2 = 1.5m, year 3 = 0.3m. Returns 5</p></li>
+<li><p>Project 4 with capital requirements for year 1 = 0.1m, year 2 = 0.4m, year 3 = 0.1m. Returns 1</p></li>
+<li><p>Total available capital for each of the years year 1 = 3.1m, year 2 = 2.5m, year 3 = 0.4m</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                   Capital requirements ($m)
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Project   Return (£m)    Year   1     2     3
+1         2                   0.5   0.3   0.2
+2         3                   1.0   0.8   0.2
+3         5                   1.5   1.5   0.3
+4         1                   0.1   0.4   0.1
+Available capital (£m)          3.1   2.5   0.4</p>
+<p>We have a decision problem here: Which projects would you choose in order to maximise the total return?</p>
+<p><strong>Maximize</strong></p>
+<p>0.2x1 + 0.3x2 + 0.5x3 + 0.1x4</p>
+<p><strong>Variables</strong></p>
+<ul class="simple">
+<li><p>the positive decision (do something) being represented by the value 1; and</p></li>
+<li><p>the negative decision (do nothing) being represented by the value 0.</p></li>
+</ul>
+<p><strong>Constraints</strong></p>
+<p>0.5x1 + 1.0x2 + 1.5x3 + 0.1x4 &lt;= 3.1 (year 1)</p>
+<p>0.3x1 + 0.8x2 + 1.5x3 + 0.4x4 &lt;= 2.5 (year 2)</p>
+<p>0.2x1 + 0.2x2 + 0.3x3 + 0.1x4 &lt;= 0.4 (year 3)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">LpProblem</span><span class="p">(</span><span class="s1">&#39;profit-maximizing&#39;</span><span class="p">,</span> <span class="n">sense</span> <span class="o">=</span> <span class="n">LpMaximize</span><span class="p">)</span>
+
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>profit-maximizing:
+MAXIMIZE
+None
+VARIABLES
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_1</span> <span class="o">=</span> <span class="n">LpVariable</span><span class="p">(</span><span class="s1">&#39;x_1&#39;</span><span class="p">,</span> <span class="n">lowBound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upBound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cat</span><span class="o">=</span><span class="s2">&quot;Integer&quot;</span><span class="p">)</span>
+
+<span class="n">x_2</span> <span class="o">=</span> <span class="n">LpVariable</span><span class="p">(</span><span class="s1">&#39;x_2&#39;</span><span class="p">,</span> <span class="n">lowBound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upBound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cat</span><span class="o">=</span><span class="s2">&quot;Integer&quot;</span><span class="p">)</span>
+
+<span class="n">x_3</span> <span class="o">=</span> <span class="n">LpVariable</span><span class="p">(</span><span class="s1">&#39;x_3&#39;</span><span class="p">,</span> <span class="n">lowBound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upBound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cat</span><span class="o">=</span><span class="s2">&quot;Integer&quot;</span><span class="p">)</span>
+
+<span class="n">x_4</span> <span class="o">=</span> <span class="n">LpVariable</span><span class="p">(</span><span class="s1">&#39;x_4&#39;</span><span class="p">,</span> <span class="n">lowBound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upBound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cat</span><span class="o">=</span><span class="s2">&quot;Integer&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x_1</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">x_2</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">x_3</span> <span class="o">+</span> <span class="mi">1</span><span class="o">*</span><span class="n">x_4</span><span class="p">,</span> <span class="s1">&#39;lifetime profit&#39;</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">+=</span> <span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">x_1</span> <span class="o">+</span> <span class="mf">1.0</span><span class="o">*</span><span class="n">x_2</span> <span class="o">+</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">x_3</span> <span class="o">+</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">x_4</span> <span class="o">&lt;=</span> <span class="mf">3.1</span><span class="p">,</span> <span class="s1">&#39;year 1&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">+=</span> <span class="p">(</span><span class="mf">0.3</span><span class="o">*</span><span class="n">x_1</span> <span class="o">+</span> <span class="mf">0.8</span><span class="o">*</span><span class="n">x_2</span> <span class="o">+</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">x_3</span> <span class="o">+</span> <span class="mf">0.4</span><span class="o">*</span><span class="n">x_4</span> <span class="o">&lt;=</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;year 2&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">+=</span> <span class="p">(</span><span class="mf">0.2</span><span class="o">*</span><span class="n">x_1</span> <span class="o">+</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">x_2</span> <span class="o">+</span> <span class="mf">0.3</span><span class="o">*</span><span class="n">x_3</span> <span class="o">+</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">x_4</span> <span class="o">&lt;=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="s1">&#39;year 3&#39;</span><span class="p">)</span>
+
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>profit-maximizing:
+MAXIMIZE
+2*x_1 + 3*x_2 + 5*x_3 + 1*x_4 + 0
+SUBJECT TO
+year_1: 0.5 x_1 + x_2 + 1.5 x_3 + 0.1 x_4 &lt;= 3.1
+
+year_2: 0.3 x_1 + 0.8 x_2 + 1.5 x_3 + 0.4 x_4 &lt;= 2.5
+
+year_3: 0.2 x_1 + 0.2 x_2 + 0.3 x_3 + 0.1 x_4 &lt;= 0.4
+
+VARIABLES
+0 &lt;= x_1 &lt;= 1 Integer
+0 &lt;= x_2 &lt;= 1 Integer
+0 &lt;= x_3 &lt;= 1 Integer
+0 &lt;= x_4 &lt;= 1 Integer
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">status</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;status:</span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">status</span><span class="si">}</span><span class="s1"> meaning: </span><span class="si">{</span><span class="n">LpStatus</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">status</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>status:1 meaning: Optimal
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">objective</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">variables</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> : </span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">value</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x_1 : 0.0
+x_2 : 0.0
+x_3 : 1.0
+x_4 : 1.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="capital-budgeting-problem-with-extension">
+<h3>Capital budgeting problem with extension<a class="headerlink" href="#capital-budgeting-problem-with-extension" title="Permalink to this heading">#</a></h3>
+<p>Suppose now that we have the additional condition that either project 1 or project 2 must be chosen (i.e. projects 1 and 2 are mutually exclusive)</p>
+<p>This condition is an example of an either/or condition “either project 1 or project 2 must be chosen”. In terms of the variables we have already defined this condition is “either x1 = 1 or x2 = 1”. The standard trick for dealing with either/or conditions relating to two zero-one variables is to add to the IP the constraint</p>
+<p>x1 + x2 = 1</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">LpProblem</span><span class="p">(</span><span class="s1">&#39;profit-maximizing&#39;</span><span class="p">,</span> <span class="n">sense</span> <span class="o">=</span> <span class="n">LpMaximize</span><span class="p">)</span>
+
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>profit-maximizing:
+MAXIMIZE
+None
+VARIABLES
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_1</span> <span class="o">=</span> <span class="n">LpVariable</span><span class="p">(</span><span class="s1">&#39;x_1&#39;</span><span class="p">,</span> <span class="n">lowBound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upBound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cat</span><span class="o">=</span><span class="s2">&quot;Integer&quot;</span><span class="p">)</span>
+
+<span class="n">x_2</span> <span class="o">=</span> <span class="n">LpVariable</span><span class="p">(</span><span class="s1">&#39;x_2&#39;</span><span class="p">,</span> <span class="n">lowBound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upBound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cat</span><span class="o">=</span><span class="s2">&quot;Integer&quot;</span><span class="p">)</span>
+
+<span class="n">x_3</span> <span class="o">=</span> <span class="n">LpVariable</span><span class="p">(</span><span class="s1">&#39;x_3&#39;</span><span class="p">,</span> <span class="n">lowBound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upBound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cat</span><span class="o">=</span><span class="s2">&quot;Integer&quot;</span><span class="p">)</span>
+
+<span class="n">x_4</span> <span class="o">=</span> <span class="n">LpVariable</span><span class="p">(</span><span class="s1">&#39;x_4&#39;</span><span class="p">,</span> <span class="n">lowBound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upBound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cat</span><span class="o">=</span><span class="s2">&quot;Integer&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x_1</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">x_2</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">x_3</span> <span class="o">+</span> <span class="mi">1</span><span class="o">*</span><span class="n">x_4</span><span class="p">,</span> <span class="s1">&#39;lifetime profit&#39;</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">+=</span> <span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">x_1</span> <span class="o">+</span> <span class="mf">1.0</span><span class="o">*</span><span class="n">x_2</span> <span class="o">+</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">x_3</span> <span class="o">+</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">x_4</span> <span class="o">&lt;=</span> <span class="mf">3.1</span><span class="p">,</span> <span class="s1">&#39;year 1&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">+=</span> <span class="p">(</span><span class="mf">0.3</span><span class="o">*</span><span class="n">x_1</span> <span class="o">+</span> <span class="mf">0.8</span><span class="o">*</span><span class="n">x_2</span> <span class="o">+</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">x_3</span> <span class="o">+</span> <span class="mf">0.4</span><span class="o">*</span><span class="n">x_4</span> <span class="o">&lt;=</span> <span class="mf">2.5</span><span class="p">,</span> <span class="s1">&#39;year 2&#39;</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">+=</span> <span class="p">(</span><span class="mf">0.2</span><span class="o">*</span><span class="n">x_1</span> <span class="o">+</span> <span class="mf">0.2</span><span class="o">*</span><span class="n">x_2</span> <span class="o">+</span> <span class="mf">0.3</span><span class="o">*</span><span class="n">x_3</span> <span class="o">+</span> <span class="mf">0.1</span><span class="o">*</span><span class="n">x_4</span> <span class="o">&lt;=</span> <span class="mf">0.4</span><span class="p">,</span> <span class="s1">&#39;year 3&#39;</span><span class="p">)</span>
+
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>profit-maximizing:
+MAXIMIZE
+2*x_1 + 3*x_2 + 5*x_3 + 1*x_4 + 0
+SUBJECT TO
+year_1: 0.5 x_1 + x_2 + 1.5 x_3 + 0.1 x_4 &lt;= 3.1
+
+year_2: 0.3 x_1 + 0.8 x_2 + 1.5 x_3 + 0.4 x_4 &lt;= 2.5
+
+year_3: 0.2 x_1 + 0.2 x_2 + 0.3 x_3 + 0.1 x_4 &lt;= 0.4
+
+VARIABLES
+0 &lt;= x_1 &lt;= 1 Integer
+0 &lt;= x_2 &lt;= 1 Integer
+0 &lt;= x_3 &lt;= 1 Integer
+0 &lt;= x_4 &lt;= 1 Integer
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">+=</span> <span class="p">(</span><span class="n">x_1</span> <span class="o">+</span> <span class="n">x_2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;Either-1-or-2&#39;</span><span class="p">)</span>
+
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>profit-maximizing:
+MAXIMIZE
+2*x_1 + 3*x_2 + 5*x_3 + 1*x_4 + 0
+SUBJECT TO
+year_1: 0.5 x_1 + x_2 + 1.5 x_3 + 0.1 x_4 &lt;= 3.1
+
+year_2: 0.3 x_1 + 0.8 x_2 + 1.5 x_3 + 0.4 x_4 &lt;= 2.5
+
+year_3: 0.2 x_1 + 0.2 x_2 + 0.3 x_3 + 0.1 x_4 &lt;= 0.4
+
+Either_1_or_2: x_1 + x_2 = 1
+
+VARIABLES
+0 &lt;= x_1 &lt;= 1 Integer
+0 &lt;= x_2 &lt;= 1 Integer
+0 &lt;= x_3 &lt;= 1 Integer
+0 &lt;= x_4 &lt;= 1 Integer
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">status</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;status:</span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">status</span><span class="si">}</span><span class="s1"> meaning: </span><span class="si">{</span><span class="n">LpStatus</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">status</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>status:1 meaning: Optimal
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">objective</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">variables</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> : </span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">value</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x_1 : 0.0
+x_2 : 1.0
+x_3 : 0.0
+x_4 : 1.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="manufacturing-plants-and-distribution-facilities">
+<h3>Manufacturing plants and Distribution facilities<a class="headerlink" href="#manufacturing-plants-and-distribution-facilities" title="Permalink to this heading">#</a></h3>
+<p>Decisions:</p>
+<ul class="simple">
+<li><p>Build a manufacturing plant in Alberta (lifetime value 9m cost 6m)</p></li>
+<li><p>Build a manufacturing plant in British Columbia (lifetime value 6m cost 3m)</p></li>
+<li><p>Build a distribution facility in Alberta (lifetime value 9m cost 7m)</p></li>
+<li><p>Build a distribution facility in British Columbia (lifetime value 5m cost 4m)</p></li>
+<li><p>If the plant is in Alberta the distribution facility may or may not be in Alberta</p></li>
+<li><p>If the plant is in British Columbia the distribution facility may or may not be in British Columbia</p></li>
+<li><p>The distribution facility HAS to be in a location where the plant is present</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Maximizing</span>
+<span class="c1"># z = 9x_1 + 6x_2 + 9x_3 + 5x_4</span>
+
+<span class="c1"># 6x_1 + 3x_2 + 7x_3 + 4x_4 &lt;= 13</span>
+<span class="c1"># x_3 - x_1 &lt;= 0</span>
+<span class="c1"># x_4 - x_2 &lt;= 0</span>
+
+<span class="c1"># all x&#39;s are binary</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">LpProblem</span><span class="p">(</span><span class="s1">&#39;lifetime-value-maximizing&#39;</span><span class="p">,</span> <span class="n">sense</span> <span class="o">=</span> <span class="n">LpMaximize</span><span class="p">)</span>
+
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lifetime-value-maximizing:
+MAXIMIZE
+None
+VARIABLES
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_1</span> <span class="o">=</span> <span class="n">LpVariable</span><span class="p">(</span><span class="s1">&#39;x_1&#39;</span><span class="p">,</span> <span class="n">lowBound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upBound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cat</span><span class="o">=</span><span class="s2">&quot;Integer&quot;</span><span class="p">)</span>
+
+<span class="n">x_2</span> <span class="o">=</span> <span class="n">LpVariable</span><span class="p">(</span><span class="s1">&#39;x_2&#39;</span><span class="p">,</span> <span class="n">lowBound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upBound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cat</span><span class="o">=</span><span class="s2">&quot;Integer&quot;</span><span class="p">)</span>
+
+<span class="n">x_3</span> <span class="o">=</span> <span class="n">LpVariable</span><span class="p">(</span><span class="s1">&#39;x_3&#39;</span><span class="p">,</span> <span class="n">lowBound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upBound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cat</span><span class="o">=</span><span class="s2">&quot;Integer&quot;</span><span class="p">)</span>
+
+<span class="n">x_4</span> <span class="o">=</span> <span class="n">LpVariable</span><span class="p">(</span><span class="s1">&#39;x_4&#39;</span><span class="p">,</span> <span class="n">lowBound</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upBound</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">cat</span><span class="o">=</span><span class="s2">&quot;Integer&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">+=</span> <span class="p">(</span><span class="mi">9</span><span class="o">*</span><span class="n">x_1</span> <span class="o">+</span> <span class="mi">6</span><span class="o">*</span><span class="n">x_2</span> <span class="o">+</span> <span class="mi">9</span><span class="o">*</span><span class="n">x_3</span> <span class="o">+</span> <span class="mi">5</span><span class="o">*</span><span class="n">x_4</span><span class="p">,</span> <span class="s1">&#39;lifetime value&#39;</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">+=</span> <span class="mi">6</span><span class="o">*</span><span class="n">x_1</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">x_2</span> <span class="o">+</span> <span class="mi">7</span><span class="o">*</span><span class="n">x_3</span> <span class="o">+</span> <span class="mi">4</span><span class="o">*</span><span class="n">x_4</span> <span class="o">&lt;=</span> <span class="mi">13</span>
+<span class="n">model</span> <span class="o">+=</span> <span class="n">x_3</span> <span class="o">-</span> <span class="n">x_1</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+<span class="n">model</span> <span class="o">+=</span> <span class="n">x_4</span> <span class="o">-</span> <span class="n">x_2</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>lifetime-value-maximizing:
+MAXIMIZE
+9*x_1 + 6*x_2 + 9*x_3 + 5*x_4 + 0
+SUBJECT TO
+_C1: 6 x_1 + 3 x_2 + 7 x_3 + 4 x_4 &lt;= 13
+
+_C2: - x_1 + x_3 &lt;= 0
+
+_C3: - x_2 + x_4 &lt;= 0
+
+VARIABLES
+0 &lt;= x_1 &lt;= 1 Integer
+0 &lt;= x_2 &lt;= 1 Integer
+0 &lt;= x_3 &lt;= 1 Integer
+0 &lt;= x_4 &lt;= 1 Integer
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">status</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;status:</span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="n">status</span><span class="si">}</span><span class="s1"> meaning: </span><span class="si">{</span><span class="n">LpStatus</span><span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">status</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>status:1 meaning: Optimal
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">objective</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">variables</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s1"> : </span><span class="si">{</span><span class="n">var</span><span class="o">.</span><span class="n">value</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x_1 : 1.0
+x_2 : 1.0
+x_3 : 0.0
+x_4 : 1.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./docs"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Ingeter-Linear-Programming.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Integer Programming</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="Sudoku_Solver.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Sudoku Solver - Integer Linear Programming approach using PuLP</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-statement">Problem statement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-solve-it-graphically-as-though-it-is-an-lp-problem-i-e-lp-relaxation">Let’s solve it graphically as though it is an LP problem, i.e. LP relaxation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-solution">Graphical Solution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pick-coordinates-to-test-for-the-optimal-solution">Pick coordinates to test for the optimal solution.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-using-pulp">Solution using Pulp</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#manufacturing-problem">Manufacturing problem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#from-ncert">From NCERT</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximize">Maximize</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#subject-to-the-constraints">subject to the constraints:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Graphical Solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pick-integer-points-coordinates-for-optimal-solution">Pick integer points (coordinates) for optimal solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution using PuLp</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-budgeting-problem">Capital budgeting problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#capital-budgeting-problem-with-extension">Capital budgeting problem with extension</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#manufacturing-plants-and-distribution-facilities">Manufacturing plants and Distribution facilities</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Hu family
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

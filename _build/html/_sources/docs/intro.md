@@ -4,5 +4,5 @@ Mathematical optimization models allow us to represent our objectives, decision 
 
 Check out the content pages to see more.
 
-```{tableofcontents}
+```{bibliography}
 ```
