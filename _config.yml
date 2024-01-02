@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: Linear Programming book
-author: Hu family
+author: Dan
 logo: lp.jpg
 
 # Force re-execution of notebooks on each build.

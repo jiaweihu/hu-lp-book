@@ -6,16 +6,11 @@ root: docs/intro
 parts:
   - caption: Linear Programming
     chapters:
-    - file: docs/Linear-Programming
-      sections:
-        - file: docs/LP/Optimization-Importance
-        - file: docs/LP/Objectives-DecisionVariables-Constraints
-        - file: docs/LP/Optimal-Feasible-Solutions
-        - file: docs/LP/Linear-Programming
-    - file: docs/CaseStudy-HappyPetFood-Desc
-    - file: docs/LP-CaseStudy
+    - file: docs/LP/Linear_Programming_Description
+    - file: docs/LP/LP-CaseStudy-PetFood-Desc
+    - file: docs/LP/LP-CaseStudy-PetFood-Solver
   - caption: Integer Linear Programming
     chapters:
-    - file: docs/Ingeter-Linear-Programming
-    - file: docs/ManufacturingAndDistribution
-    - file: docs/Sudoku_Solver
+    - file: docs/ILP/Ingeter-Linear-Programming
+    - file: docs/ILP/ManufacturingAndDistribution
+    - file: docs/ILP/Sudoku_Solver

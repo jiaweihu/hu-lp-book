@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Optimal Solution and Feasible Solutions &#8212; Linear Programming book</title>
+    <title>Linear Programming Description &#8212; Linear Programming book</title>
   
   
   
@@ -64,9 +64,11 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/LP/Optimal-Feasible-Solutions';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'docs/LP/Linear_Programming_Description';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Case Study: Happy Pet Food Description" href="LP-CaseStudy-PetFood-Desc.html" />
+    <link rel="prev" title="Welcome to Dan’s linear programming book" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -169,8 +171,8 @@ const thebe_selector_output = ".output, .cell_output"
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Programming</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Linear_Programming_Description.html">Linear Programming Description</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Linear Programming Description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LP-CaseStudy-PetFood-Desc.html">Case Study: Happy Pet Food Description</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LP-CaseStudy-PetFood-Solver.html">Linear Programming Case Study: Happy Pet Food</a></li>
 </ul>
@@ -250,7 +252,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/jiaweihu/hu-lp-book/issues/new?title=Issue%20on%20page%20%2Fdocs/LP/Optimal-Feasible-Solutions.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jiaweihu/hu-lp-book/issues/new?title=Issue%20on%20page%20%2Fdocs/LP/Linear_Programming_Description.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -280,7 +282,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/docs/LP/Optimal-Feasible-Solutions.md" target="_blank"
+      <li><a href="../../_sources/docs/LP/Linear_Programming_Description.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -351,7 +353,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -362,11 +366,20 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Optimal Solution and Feasible Solutions</h1>
+    <h1>Linear Programming Description</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-representation">Mathematical Representation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usecase-the-diet-problem">UseCase: The Diet Problem</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -376,15 +389,117 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="optimal-solution-and-feasible-solutions">
-<h1>Optimal Solution and Feasible Solutions<a class="headerlink" href="#optimal-solution-and-feasible-solutions" title="Permalink to this heading">#</a></h1>
-<p>In this video, we’ll discuss and understand what it means for you to have a feasible solution to your optimization problem. We’ll see that it’s possible for you to have many feasible solutions. Not all of them may be optimal. So, we’ve structured our optimization problem. We know what we want to achieve. We know what we control and we know what scarce resources that we need to use. Which means we have our objective function and its directionality. We know our decision variables and we know the constraints on the solution. Once we’ve framed our optimization problem, we’ll seek solutions. What is a solution? Any values assigned to the decision variable constitutes a solution. A solution is essentially when you just plug in some values for all of the decision variables and you get some kind of result for the objective function.
-So, a solution is some value that we have for the objective function by plugging in values. Now a solution need not satisfy all of the constraints that you have specified in the model. A solution need not be a feasible solution. If to achieve a certain sales target, it seems like you need to spend <span class="math notranslate nohighlight">\(10 million and you do not have \)</span>10 million, that particular solution. Well, that’s not a feasible solution because it does not satisfy the constraints in your model. A feasible solution is one that satisfies the constraints in your model. You need to feed in your model to an optimization procedure. An optimization procedure is what will find solutions to your optimization problems which satisfy all of the constraints. So, this is how the optimization process or the optimization procedure works. Let’s breakdown this high-level visualization step by step and understand what we see here.</p>
-<p>[Video description begins] A slide titled Optimization Process appears. On the left hand-side, it displays three blocks. They read: Objective function, Decision variables, and Constraints. These three blocks direct an arrow towards the Optimization procedure, that further points an arrow towards the Optimal solution. [Video description ends]
-Observe the inputs to the optimization process. You need to mathematically set up your objective function. Specify your decision variables and your constraints. This is where you’re framing your optimization problem. Remember framing the optimization problem is all important to ensure that you’re solving the right problem. Now all of these, the objective function, the decision variables and the constraints are passed in as inputs to the optimization procedure. The optimization procedure is some kind of mathematical procedure that helps us find the optimal solution. Now in the modern world, you don’t really need to know the mathematics behind the optimization procedure. Though an intuition helps you’ll simply feed this into some kind of library or code. For different kinds of optimization problems, the optimization procedure will vary. It’s not the same for all the different kinds of optimization problems that you might set up.
-Optimization problems may be dynamic, static, stochastic. They may involve a linear constraints in which case you’ll use linear programming. They may involve integer decision variables in which case you’ll use integer programming. So, the optimization procedure will be different in each case. Now, this optimization procedure is a mathematical procedure and it often tends to be mathematically as well as computationally difficult. So it’s a very computationally intensive process. If you had to sit down and work out the mathematical details of this procedure, well, that’s going to be very hard and take too long. That’s why we have computers. Optimization is such a fundamental need in the real world that there are pre-defined tools that make this very, very simple. So optimization procedures are implemented in all of the tools that you’ll use in daily life. Excel, R, Python and a number of other programming languages will have libraries that implement these optimization procedures. So, it’s up to you to frame the optimization problem. Feed the details into the optimization procedure and get the optimal solution. So, what is the optimal solution?
-The best values of the decision variables which meet all of the constraints that we’ve framed in the problem and have the best performance based on our evaluation criteria. It maximizes the profit or revenue, minimizes time, minimizes costs. It meets our objective function. So, the optimal solution maximizes or minimizes the objective function. Our job in this process is to frame the optimization model correctly with the right objective function, decision variables and constraints. The optimization procedure takes care of finding the optimal solution to our problem. Now, what is the optimal solution? Well, the optimal solution is chosen from the feasible solutions. Feasible solutions are all of the solutions to your problem which meet the constraints. A set of acceptable decision values of all decision variables which meet our resource scarcity constraints. The optimal solution is the one that maximizes or minimizes the objective function from within this feasible solution set.
-It’s absolutely required that the optimal solution be drawn from the set of feasible solution. The optimal solution has to be feasible. It cannot use more resources than we have available. Now, they might be more than one optimal solution to a problem. So you may have multiple optimal solutions and you pick one of these. Now, it’s also possible that your problem is set up in such a way that the feasible solution set is empty. There are absolutely no feasible solutions to your problem. If all of the solutions are infeasible, there is no solution to your optimization problem.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="linear-programming-description">
+<h1>Linear Programming Description<a class="headerlink" href="#linear-programming-description" title="Permalink to this heading">#</a></h1>
+<p>A linear program deals with minimization or a maximization problem depending on whether the objective function is to be minimized or maximized. The constraints can either be inequalities (≤ or ≥) or equalities. Variables might be unrestricted (i.e. they can take positive or negative values) or be restricted (i.e. can only be nonnegative).\</p>
+<section id="mathematical-representation">
+<h2>Mathematical Representation<a class="headerlink" href="#mathematical-representation" title="Permalink to this heading">#</a></h2>
+<p>A general linear program in the decision variables x1, … , xn is
+therefore of the following form:</p>
+<p>Maximize or Minimize
+<span class="math notranslate nohighlight">\(z = c_0 + c_1x_1 + . . . + c_nx_n\)</span></p>
+<p>subject to:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+a_{i1}x_1 + a_{i2}x_2 + . . . + a_{in}x_n\quad
+\begin{matrix}
+  \leq\\
+  \geq\\
+  =
+ \end{matrix}
+\quad b_i\quad\quad i=1,...,m
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+x_i =
+  \begin{cases}
+    \geq 0\\
+    \leq 0
+  \end{cases}
+\quad\quad j=1,...,n
+\end{split}\]</div>
+<p>The problem data in this linear program consists of <span class="math notranslate nohighlight">\(c_j (j = 0, . . . , n)\)</span>, <span class="math notranslate nohighlight">\(b_i (i = 1, . . . , m)\)</span> and <span class="math notranslate nohighlight">\(a_{ij}
+(i = 1, . . . , m, j = 1, . . . , n)\)</span>. <span class="math notranslate nohighlight">\(c_j\)</span> is referred to as the objective function coefficient of <span class="math notranslate nohighlight">\(x_j\)</span> or, more simply, the cost coefficient of <span class="math notranslate nohighlight">\(x_j\)</span> . <span class="math notranslate nohighlight">\(b_i\)</span>
+is known as the right-hand-side (RHS) of equation i. Notice
+that the constant term <span class="math notranslate nohighlight">\(c_0\)</span> can be omitted without affecting the set of optimal solutions.</p>
+</section>
+<section id="usecase-the-diet-problem">
+<h2>UseCase: The Diet Problem<a class="headerlink" href="#usecase-the-diet-problem" title="Permalink to this heading">#</a></h2>
+<p>In the diet model, a list of available foods is given together with the nutrient content and the cost
+per unit weight of each food. A certain amount of each nutrient is required per day. For example,
+here is the data corresponding to a civilization with just two types of grains (G1 and G2) and three
+types of nutrients (starch, proteins, vitamins):</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p>Starch</p></th>
+<th class="head"><p>Proteins</p></th>
+<th class="head"><p>Vitamins</p></th>
+<th class="head"><p>Cost ($/kg)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>G1</p></td>
+<td><p>5</p></td>
+<td><p>4</p></td>
+<td><p>2</p></td>
+<td><p>0.6</p></td>
+</tr>
+<tr class="row-odd"><td><p>G2</p></td>
+<td><p>7</p></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+<td><p>0.35</p></td>
+</tr>
+<tr class="row-even"><td><p>requirement</p></td>
+<td><p>8</p></td>
+<td><p>15</p></td>
+<td><p>3</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>Nutrient content and cost per kg of food.</p>
+<p>The requirement per day of starch, proteins and vitamins is 8, 15 and 3 respectively. The problem
+is to find how much of each food to consume per day so as to get the required amount per day of
+each nutrient at minimal cost.</p>
+<p>When trying to formulate a problem as a linear program, the first step is to decide which
+<em>decision variables</em> to use. These variables represent the unknowns in the problem. In the diet
+problem, a very natural choice of decision variables is:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_1\)</span>: number of units of grain G1 to be consumed per day,</p></li>
+<li><p><span class="math notranslate nohighlight">\(x_2\)</span>: number of units of grain G2 to be consumed per day.</p></li>
+</ul>
+<p>The next step is to write down the <em>objective function</em>. The objective function is the function to be
+minimized or maximized. In this case, the objective is to minimize the total cost per day which is
+given by <span class="math notranslate nohighlight">\(z = 0.6x_1 + 0.35x_2\)</span> (the value of the objective function is often denoted by z).</p>
+<p>Finally, we need to describe the different constraints that need to be satisfied by <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> must certainly satisfy <span class="math notranslate nohighlight">\(x_1\)</span> ≥ 0 and <span class="math notranslate nohighlight">\(x_2\)</span> ≥ 0. Only nonnegative amounts of food can be eaten! These constraints are referred to as nonnegativity constraints.</p></li>
+<li><p>Moreover, not all possible values for <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> give
+rise to a diet with the required amounts of nutrients per day. The amount of starch in <span class="math notranslate nohighlight">\(x_1\)</span> units of
+G1 and <span class="math notranslate nohighlight">\(x_2\)</span> units of G2 is 5<span class="math notranslate nohighlight">\(x_1\)</span> + 7<span class="math notranslate nohighlight">\(x_2\)</span> and this amount must be at least 8, the daily requirement of
+starch. Therefore, <span class="math notranslate nohighlight">\(x_1\)</span> and <span class="math notranslate nohighlight">\(x_2\)</span> must satisfy 5<span class="math notranslate nohighlight">\(x_1\)</span> + 7<span class="math notranslate nohighlight">\(x_2\)</span> ≥ 8.</p></li>
+<li><p>Similarly, the requirements on the amount
+of proteins and vitamins imply the constraints 4<span class="math notranslate nohighlight">\(x_1\)</span> + 2<span class="math notranslate nohighlight">\(x_2\)</span> ≥ 15 and 2<span class="math notranslate nohighlight">\(x_1\)</span> + <span class="math notranslate nohighlight">\(x_2\)</span> ≥ 3.</p></li>
+</ul>
+<p>This diet problem can therefore be formulated by the following linear program:</p>
+<p>Minimize
+$<span class="math notranslate nohighlight">\(z = 0.6x_1 + 0.35x_2\)</span>$</p>
+<p>Subject to:</p>
+<div class="math notranslate nohighlight">
+\[5x_1 + 7x_2 ≥ 8\]</div>
+<div class="math notranslate nohighlight">
+\[4x_1 + 2x_2 ≥ 15\]</div>
+<div class="math notranslate nohighlight">
+\[2x_1 + x_2 ≥ 3\]</div>
+<div class="math notranslate nohighlight">
+\[x_1 ≥ 0\]</div>
+<div class="math notranslate nohighlight">
+\[x_2 ≥ 0\]</div>
+<p>A solution x = (<span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_2\)</span>) is said to be feasible with respect to the above linear program if it satisfies all the above constraints. The set of feasible solutions is called the feasible space or feasible region. A feasible solution is optimal if its objective function value is equal
+to the smallest value z can take over the feasible region.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -417,12 +532,45 @@ It’s absolutely required that the optimal solution be drawn from the set of fe
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Welcome to Dan’s linear programming book</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="LP-CaseStudy-PetFood-Desc.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Case Study: Happy Pet Food Description</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-representation">Mathematical Representation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usecase-the-diet-problem">UseCase: The Diet Problem</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

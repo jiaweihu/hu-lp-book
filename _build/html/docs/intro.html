@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Welcome to hu’s linear programming book &#8212; Linear Programming book</title>
+    <title>Welcome to Dan’s linear programming book &#8212; Linear Programming book</title>
   
   
   
@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'docs/intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Linear Programming" href="Linear-Programming.html" />
+    <link rel="next" title="Linear Programming Description" href="LP/Linear_Programming_Description.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -163,27 +163,21 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Welcome to hu’s linear programming book
+                    Welcome to Dan’s linear programming book
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Programming</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="Linear-Programming.html">Linear Programming</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="LP/Optimization-Importance.html">Understanding the Importance of Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="LP/Objectives-DecisionVariables-Constraints.html">Objectives, Decision Variables, and Constraints</a></li>
-<li class="toctree-l2"><a class="reference internal" href="LP/Optimal-Feasible-Solutions.html">Optimal Solution and Feasible Solutions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="LP/Linear-Programming.html">Linear Programming</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="CaseStudy-HappyPetFood-Desc.html">Case Study: Happy Pet Food Description</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LP-CaseStudy.html">Linear Programming Case Study: Happy Pet Food</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LP/Linear_Programming_Description.html">Linear Programming Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LP/LP-CaseStudy-PetFood-Desc.html">Case Study: Happy Pet Food Description</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LP/LP-CaseStudy-PetFood-Solver.html">Linear Programming Case Study: Happy Pet Food</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Integer Linear Programming</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Ingeter-Linear-Programming.html">Integer Programming</a></li>
-<li class="toctree-l1"><a class="reference internal" href="ManufacturingAndDistribution.html">Manufacturing and Distribution Problem</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Sudoku_Solver.html">Sudoku Solver - Integer Linear Programming approach using PuLP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ILP/Ingeter-Linear-Programming.html">Integer Programming</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ILP/ManufacturingAndDistribution.html">Three Manufacturing and Distribution Problem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ILP/Sudoku_Solver.html">Sudoku Solver - Integer Linear Programming approach using PuLP</a></li>
 </ul>
 
     </div>
@@ -367,7 +361,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Welcome to hu’s linear programming book</h1>
+    <h1>Welcome to Dan’s linear programming book</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -381,10 +375,15 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-hu-s-linear-programming-book">
-<h1>Welcome to hu’s linear programming book<a class="headerlink" href="#welcome-to-hu-s-linear-programming-book" title="Permalink to this heading">#</a></h1>
-<p>Mathematical optimization models allow us to represent our objectives, decision variables, and constraints in mathematical terms, and solving these models gives us the optimal solution to our problems. Linear programming is an optimization model that can be used when our objective function and constraints can be represented using linear terms. Use this course to learn how decision-making can be represented using mathematical optimization models. Begin by examining how optimization problems can be formulated using objective functions, decision variables, and constraints. You’ll then recognize how to find an optimal solution to a problem from amongst feasible solutions through a case study. This course will also help you investigate the pros and cons of the assumptions made by linear programming and the steps involved in solving linear programming problems graphically as well as by using the Simplex method. When you are done with this course, you will have the skills and knowledge to apply linear programming to solve optimization problems.</p>
-<p>Check out the content pages to see more.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="welcome-to-dan-s-linear-programming-book">
+<h1>Welcome to Dan’s linear programming book<a class="headerlink" href="#welcome-to-dan-s-linear-programming-book" title="Permalink to this heading">#</a></h1>
+<p>Linear Programming (LP) is a method to achieve the best outcome (such as maximum profit or lowest cost) in a mathematical model that represents problem objectives, decision variables, and constraints in mathematical terms. Solving the models provides the optimal solution. Industries that use linear programming models include transportation, energy, telecommunications, and manufacturing. It has proven useful in modeling diverse types of problems in planning, routing, scheduling, assignment, and design.</p>
+<p>This book provides brief descirption to Linear Programming (LP) and Integer Linear Programming (ILP), while focusing on the deminstration of using Python to solve the problems, covering production, manufacturing, capital budgeting. It further provides the Sudoku solver that uses ILP.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The files with Python code can be openned directly using <strong>Google Colab</strong> by clicking the top right icon.</p>
+</div>
+<p>Please check out the content pages to see more.</p>
 <div class="docutils container" id="id1">
 <div class="citation" id="id5" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>Aja21<span class="fn-bracket">]</span></span>
@@ -437,11 +436,11 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="Linear-Programming.html"
+       href="LP/Linear_Programming_Description.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Linear Programming</p>
+        <p class="prev-next-title">Linear Programming Description</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -461,7 +460,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By Hu family
+By Dan
 </p>
 
   </div>
